@@ -28,19 +28,6 @@ Vi validerar ett **Feature-objekt** dynamiskt eftersom:
 4. **Validation Pipeline** → Kör alla validatorer i sekvens.
 5. **Validation Resultat** → Returnerar pass/fail och felmeddelanden.
 
----
-
-## ✍️ Regler Exempel
-
-| Egenskap | Validator Typ    | Konfiguration             |
-|----------|----------------|---------------------------|
-| status   | required        | —                         |
-| status   | allowedValues   | table: StatusCodes        |
-| status   | dateRange       | —                         |
-
-- `allowedValues` kommer från en falsk databas i detta fall: `[Active, Inactive, Pending]`
-
----
 
 ## ⚙️ MVP Implementation (C#)
 
