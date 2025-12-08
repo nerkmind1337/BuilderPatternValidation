@@ -4,13 +4,13 @@ public static class FakeDatabase
 {
     private static readonly Dictionary<string, List<string>> _data = new()
     {
-        { "StatusCodes", new List<string> { "Active", "Inactive", "Pending" } }
+        { "kön", new List<string> { "kvinna", "man"} }
     };
 
-    public static List<string> GetAllowedValues(string table)
+    public static List<string> GetAllowedValues(string propertyName)
     {
-        return _data.ContainsKey(table)
-            ? _data[table]
+        return _data.ContainsKey(propertyName)
+            ? _data[propertyName]
             : new List<string>();
     }
 }

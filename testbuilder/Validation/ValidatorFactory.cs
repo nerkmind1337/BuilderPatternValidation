@@ -20,7 +20,7 @@ public class ValidatorFactory
             "allowedValues" =>
                 new AllowedValuesValidator(
                     rule.PropertyName,
-                    FakeDatabase.GetAllowedValues(rule.Config["table"])
+                    FakeDatabase.GetAllowedValues(rule.PropertyName)
                 ),
 
             _ =>

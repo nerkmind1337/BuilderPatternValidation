@@ -51,5 +51,5 @@ Vi validerar ett **Feature-objekt** dynamiskt eftersom:
 - **Pipeline:** Kör alla validatorer och samlar felmeddelanden
 
 ---
-
+![img_1.png](img_1.png)
 ![img.png](img.png)

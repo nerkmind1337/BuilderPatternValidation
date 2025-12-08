@@ -10,12 +10,12 @@ public class Program
         var invalidFeature = new Feature
         {
             Name = "InvalidFeature",
-            FeatureType = "TypeA",
+            FeatureType = "PersonInfo",
             PropertyTypes = new List<PropertyType>
             {
                 new PropertyType {
-                    Name = "status",
-                    Value = "Broken",
+                    Name = "kön",
+                    Value = "ikkebinär",
                     ValidFrom = DateTime.Now.AddDays(1),
                     ValidTo = DateTime.Now // invalid since, this is before the validFrom date
                 }
@@ -25,13 +25,13 @@ public class Program
         var validFeature = new Feature
         {
             Name = "ValidFeature",
-            FeatureType = "TypeA",
+            FeatureType = "PersonInfo",
             PropertyTypes = new List<PropertyType>
             {
                 new PropertyType
                 {
-                    Name = "status",
-                    Value = "Active",
+                    Name = "kön",
+                    Value = "kvinna",
                     ValidFrom = DateTime.Now,
                     ValidTo = DateTime.Now.AddDays(5)
                 }
@@ -42,16 +42,15 @@ public class Program
         var rules = new List<RuleDefinition>
         {
             new RuleDefinition {
-                PropertyName = "status",
+                PropertyName = "kön",
                 ValidatorType = "required"
             },
             new RuleDefinition {
-                PropertyName = "status",
+                PropertyName = "kön",
                 ValidatorType = "allowedValues",
-                Config = new() { { "table", "StatusCodes" } }
             },
             new RuleDefinition {
-                PropertyName = "status",
+                PropertyName = "kön",
                 ValidatorType = "dateRange"
             }
         };
