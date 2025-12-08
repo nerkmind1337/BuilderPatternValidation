@@ -1,0 +1,61 @@
+﻿classDiagram
+    class Feature {
+        string name
+        string featureType
+        PropertyType[] propertyTypes
+    }
+
+    class PropertyType {
+        string name
+        string value
+        date validFrom
+        date validTo
+    }
+
+    class RuleDefinition {
+        string featureType
+        string propertyName
+        string validatorType
+        map config
+    }
+
+    class RuleFetcher {
+        +getRules(featureType): RuleDefinition[]
+    }
+
+    class ValidationBuilder {
+        +build(feature, rules): ValidatorPipeline
+    }
+
+    class ValidatorPipeline {
+        Validator[] validators
+        +execute(feature): ValidationResult
+    }
+
+    class ValidationResult {
+        bool isValid
+        string[] errors
+    }
+
+    class Validator {
+        <<interface>>
+        +validate(feature): bool
+        +getError(): string
+    }
+
+    class RequiredValidator
+    class EnumValidator
+    class NumberValidator
+    class DateRangeValidator
+    class RegexValidator
+
+    Feature --> "1..*" PropertyType
+    RuleFetcher --> RuleDefinition : loads
+    RuleDefinition --> Validator : maps to type
+    ValidationBuilder --> ValidatorPipeline : constructs
+    ValidatorPipeline --> Validator : contains *
+    Validator <|-- RequiredValidator
+    Validator <|-- EnumValidator
+    Validator <|-- NumberValidator
+    Validator <|-- DateRangeValidator
+    Validator <|-- RegexValidator
